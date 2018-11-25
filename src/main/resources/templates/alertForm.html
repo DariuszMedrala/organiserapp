@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Note</title>
+</head>
+<style>
+        @import url(https://fonts.googleapis.com/css?family=Exo:100,200,400);
+@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:700,400,300);
+
+body{
+	margin: 0;
+	padding: 0;
+	background: #fff;
+
+	color: #fff;
+	font-family: Arial;
+	font-size: 12px;
+}
+
+.body{
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	right: 0px;
+	bottom: 0px;
+	width: auto;
+	height: auto;
+	background-image: url(https://static.makeuseof.com/wp-content/uploads/2017/11/blurry-city-scape-photo-670x335.jpg);
+	background-size: cover;
+	-webkit-filter: blur(5px);
+	z-index: 0;
+}
+
+.grad{
+	position: absolute;
+	top: 100%;
+	left: 100%;
+	right: 100%;
+	bottom: 100%;
+	width: auto;
+	height: auto;
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0)), color-stop(100%,rgba(0,0,0,0.65))); /* Chrome,Safari4+ */
+	z-index: 1;
+	opacity: 0.7;
+}
+
+.header{
+	position: absolute;
+	top: calc(50% - 140px);
+	left: calc(50% - 400px);
+	z-index: 2;
+}
+
+.header div{
+	float: left;
+	color: #fff;
+	font-family: 'Exo', sans-serif;
+	font-size: 40px;
+	font-weight: 250;
+
+	width: 350px;
+}
+
+.header div span{
+	color: #ff471a !important;
+}
+
+.login{
+	position: absolute;
+	top: calc(50% - 150px);
+	left: calc(50% - 50px);
+	height: 150px;
+	width: 350px;
+	padding-left:0;
+    padding-top:0;
+    padding-bottom:0.4em;
+    padding-right: 0.4em;
+	z-index: 2;
+	font-family: 'Exo', sans-serif;
+	font-size: 5px;
+}
+
+
+.login input[type=text]{
+	width: 400px;
+	height: 30px;
+	background: transparent;
+	border: 1px solid rgba(255,255,255,0.6);
+	border-radius: 2px;
+	color: #fff;
+    font-family: 'Exo', sans-serif;
+	font-size: 16px;
+	font-weight: 400;
+	padding: 4px;
+	margin-top: 10px;
+}
+.text input[type=text] {
+    width: 400px;
+	height: 100px;
+	background: transparent;
+	border: 1px solid rgba(255,255,255,0.6);
+	border-radius: 2px;
+	color: #fff;
+    font-family: 'Exo', sans-serif;
+	font-size: 16px;
+	font-weight: 400;
+	padding-left:0;
+    padding-top:0;
+    padding-bottom:0.4em;
+    padding-right: 0.4em;
+	margin-top: 10px;
+}
+
+
+.login input[type=password]{
+	width: 250px;
+	height: 30px;
+	background: transparent;
+	border: 1px solid rgba(255,255,255,0.6);
+	border-radius: 2px;
+	color: #fff;
+	font-family: 'Exo', sans-serif;
+	font-size: 16px;
+	font-weight: 400;
+	padding: 4px;
+	margin-top: 10px;
+}
+.login textarea {
+    width: 400px;
+	height: 100px;
+	background: transparent;
+	border: 1px solid rgba(255,255,255,0.6);
+	border-radius: 2px;
+	color: #fff;
+    font-family: 'Exo', sans-serif;
+	font-size: 16px;
+	font-weight: 400;
+	padding-left:0;
+    padding-top:0;
+    padding-bottom:0.4em;
+    padding-right: 0.4em;
+	margin-top: 10px;
+
+}
+
+
+
+.login input[type=submit]{
+	width: 150px;
+	height: 35px;
+	background: #fff;
+	border: 1px solid #fff;
+	cursor: pointer;
+	border-radius: 2px;
+	color: #a18d6c;
+	font-family: 'Exo', sans-serif;
+	font-size: 16px;
+	font-weight: 400;
+	padding: 6px;
+	margin-top: 10px;
+}
+
+.login button[type=button] {
+width: 150px;
+	height: 35px;
+	background: #fff;
+	border: 1px solid #fff;
+	cursor: pointer;
+	border-radius: 2px;
+	color: #a18d6c;
+	font-family: 'Exo', sans-serif;
+	font-size: 16px;
+	font-weight: 400;
+	padding: 6px;
+	margin-top: 10px;
+}
+
+.login input[type=submit]:hover{
+	opacity: 0.8;
+}
+
+.login input[type=submit]:active{
+	opacity: 0.6;
+}
+
+.login input[type=text]:focus{
+	outline: none;
+	border: 1px solid rgba(255,255,255,0.9);
+}
+
+.login input[type=password]:focus{
+	outline: none;
+	border: 1px solid rgba(255,255,255,0.9);
+}
+
+.login input[type=submit]:focus{
+	outline: none;
+}
+
+::-webkit-input-placeholder{
+   color: rgba(255,255,255,0.6);
+}
+
+::-moz-input-placeholder{
+   color: rgba(255,255,255,0.6);
+}
+</style>
+<body>
+<div class="body"></div>
+<div class="grad"></div>
+<div class="header">
+    <div >New<span>Alert</span></div><br/>
+    <div style ="font-size: 20px">Have You ever forgotten someones birthday? Worry no more!
+        Simply write Your telephone number and  message below and set up the date. By that day, You are going to receive sms with that message. </div>
+</div>
+
+
+
+<div class="login">
+    <h1 th:text="${alertInfo}"></h1>
+    <form action="/user/alert/add" method="post" th:object="${alertForm}">
+        <input type="text" th:field="*{phoneNumber}" placeholder="PhoneNumber">
+        <textarea   th:field="*{message}" placeholder="Message"></textarea>
+        <input type="text" th:field="*{date}" placeholder="Date yyyy-MM-dd">
+        <input type="text" th:field="*{hour}" placeholder="Hour HH:mm">
+        <input type="submit" value="Create">
+    </form>
+    <button onclick="location.href='/user/alerts'" type="button">Back</button>
+</div>
+
+</body>
+</html>
